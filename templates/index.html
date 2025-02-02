@@ -4,7 +4,7 @@
     <title>Tool Anomaly Detection</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
+      href="{{ url_for('static', filename='css/styles.css') }}"
     />
   </head>
   <body>
@@ -27,48 +27,52 @@
         </div>
 
         <div class="approach-results">
-          <div class="approach">
-            <h2>Approach 1 Results</h2>
-            <div
-              class="result-box"
-              style="border-color: {{ results.approach1.color }};"
-            >
-              <h3 style="color: {{ results.approach1.color }};">
-                {{ results.approach1.result }}
-              </h3>
-              <p>
-                Processing Time: {{ "%.3f"|format(results.approach1.time) }}s
-              </p>
+          <div class="card">
+            <div class="approach">
+              <h2>Approach 1 Results</h2>
+              <div
+                class="result-box"
+                style="border-color: {{ results.approach1.color }};"
+              >
+                <h3 style="color: {{ results.approach1.color }};">
+                  {{ results.approach1.result }}
+                </h3>
+                <p>
+                  Processing Time: {{ "%.3f"|format(results.approach1.time) }}s
+                </p>
+              </div>
             </div>
           </div>
 
-          <div class="approach">
-            <h2>Approach 2 Results</h2>
-            <div class="result-box">
-              <img
-                src="{{ url_for('static', filename='images/processed/processed.jpg') }}"
-                alt="Processed Image"
-              />
-              <div class="statuses">
-                <h3
-                  style="color: {{ 'green' if results.approach2.statuses.accept_reject == 'ACCEPT' else 'red' }};"
-                >
-                  {{ results.approach2.statuses.accept_reject }}
-                </h3>
-                <p
-                  class="{{ 'status-good' if results.approach2.statuses.width.status else 'status-bad' }}"
-                >
-                  {{ results.approach2.statuses.width.message }}
-                </p>
-                <p
-                  class="{{ 'status-good' if results.approach2.statuses.length.status else 'status-bad' }}"
-                >
-                  {{ results.approach2.statuses.length.message }}
+          <div class="card">
+            <div class="approach">
+              <h2>Approach 2 Results</h2>
+              <div class="result-box">
+                <img
+                  src="{{ url_for('static', filename='images/processed/processed.jpg') }}"
+                  alt="Processed Image"
+                />
+                <div class="statuses">
+                  <h3
+                    style="color: {{ 'green' if results.approach2.statuses.accept_reject == 'ACCEPT' else 'red' }};"
+                  >
+                    {{ results.approach2.statuses.accept_reject }}
+                  </h3>
+                  <p
+                    class="{{ 'status-good' if results.approach2.statuses.width.status else 'status-bad' }}"
+                  >
+                    {{ results.approach2.statuses.width.message }}
+                  </p>
+                  <p
+                    class="{{ 'status-good' if results.approach2.statuses.length.status else 'status-bad' }}"
+                  >
+                    {{ results.approach2.statuses.length.message }}
+                  </p>
+                </div>
+                <p>
+                  Processing Time: {{ "%.3f"|format(results.approach2.time) }}s
                 </p>
               </div>
-              <p>
-                Processing Time: {{ "%.3f"|format(results.approach2.time) }}s
-              </p>
             </div>
           </div>
         </div>
@@ -85,10 +89,6 @@
         </div>
       </div>
       {% endif %}
-
-      <footer>
-        <p>All Rights Reserved. © 2023</p>
-      </footer>
     </div>
   </body>
 </html>
